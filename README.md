@@ -6,7 +6,7 @@ A little exercise to build a web application following an agile development proc
 
 <b> Mindscape is a holistic mental wellness platform designed to empower individuals with daily affirmations and challenges, while offering a personal space for reflection and tracking emotional journeys. </b>
 
-[View wireframes](https://github.com/software-students-fall2023/2-web-app-exercise-array-of-sunshine/images/mindscape_wireframes.png)
+[View wireframe diagram](images/mindscape_wireframes.png)
 
 ## User stories
 
