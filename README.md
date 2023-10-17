@@ -4,12 +4,11 @@ A little exercise to build a web application following an agile development proc
 
 ## Product vision statement
 
-See instructions. Delete this line and place the Product Vision Statement here.
+<b> Mindscape is a holistic mental wellness platform designed to empower individuals with daily affirmations and challenges, while offering a personal space for reflection and tracking emotional journeys. </b>
 
 ## User stories
 
-See instructions. Delete this line and place a link to the user stories here.
-
+[View user stories](https://github.com/software-students-fall2023/2-web-app-exercise-array-of-sunshine/issues)
 ## Task boards
-
-See instructions. Delete this line and place a link to the task boards here.
+[Sprint 1 Task Board](https://github.com/orgs/software-students-fall2023/projects/32) <br>
+[Sprint 2 Task Board](https://github.com/orgs/software-students-fall2023/projects/33)
