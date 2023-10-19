@@ -1,0 +1,23 @@
+.header-container {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  padding: 1rem 2rem; 
+  background-color: #333;
+}
+
+.logo-title-container {
+  display: flex;
+  align-items: center; 
+}
+
+.title {
+  color: white;
+  font-size: 50px;
+  margin-right: 20px; 
+}
+
+.logo {
+  width: 60px; 
+  height: 80px;
+}
