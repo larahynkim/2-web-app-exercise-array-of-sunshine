@@ -12,6 +12,12 @@
     <header>
         <h1>Welcome to MindScape</h1>
         <p>Your daily dose of calmness and mindfulness</p>
+        <!-- Hamburger menu button -->
+        <button id="hamburger-btn" onclick="toggleMenu()">☰</button>
+        <!-- Hamburger menu items -->
+        <div id="hamburger-menu" style="display: none;">
+            <a href="journal.html">Journal</a>
+        </div>
     </header>
 
     <section id="affirmation">
@@ -33,6 +39,15 @@
     <script>
         function toggleCompletion(box) {
             box.classList.toggle('completed');
+        }
+
+        function toggleMenu() {
+            var menu = document.getElementById("hamburger-menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
         }
     </script>
     
