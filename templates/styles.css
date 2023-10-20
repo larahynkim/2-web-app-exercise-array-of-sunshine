@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+header {
+    background-color: #495464;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+#affirmation {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.quote-box {
+    background-color: #e6eaf0;
+    padding: 15px;
+    border-radius: 8px;
+    font-style: italic;
+    text-align: center;
+    font-size: 1em;
+}
+
+#challenges {
+    background-color: #f3f4f6;
+    padding: 10px;
+    margin: 10px;
+    text-align: center; /* Center the heading */
+}
+
+.challenge-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Add some margin to separate boxes from heading */
+}
+
+.challenge-box {
+    flex: 1;
+    background-color: #fff;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.challenge-box:hover {
+    background-color: #e6eaf0;
+}
+
+.challenge-box.completed {
+    background-color: #c8e6c9; 
+    text-decoration: line-through;
+}
+
