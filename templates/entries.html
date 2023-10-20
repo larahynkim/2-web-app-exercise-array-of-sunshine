@@ -59,13 +59,14 @@
         <div id="title">
             <h1>MINDSCAPE</h1>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
+            <p> Welcome, {{current_user}}!</p>
         </div>
         <div id="menu">
-            <a href="/home" class="menu-button">Home Page</a>
-            <a href="/entries" class="menu-button">Entries</a>
-            <a href="/calendar" class="menu-button">Calendar</a>
+            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
+            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
+            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
         </div>
-        <a href="/account" id="account-button">Account</a>
+        <a href="/account/{{current_user}}" id="account-button">Account</a>
     </div>
     <h1>Entries</h1>
 </body>
