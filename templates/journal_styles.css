@@ -1,0 +1,70 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 20px 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.journal-form textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    resize: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.action-btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.cancel {
+    background-color: #ccc;
+    color: #333;
+}
+
+.submit {
+    background-color: #007BFF;
+    color: #ffffff;
+}
+
+.cancel:hover {
+    background-color: #b0b0b0;
+}
+
+.submit:hover {
+    background-color: #005fbb;
+}
