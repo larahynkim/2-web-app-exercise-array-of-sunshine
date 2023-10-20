@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindScape</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to MindScape</h1>
+        <p>Your daily dose of calmness and mindfulness</p>
+    </header>
+
+    <section id="affirmation">
+        <h2>Today's Affirmation</h2>
+        <div class="quote-box">
+            <p>"Embrace the present moment and find joy in every aspect of life."</p>
+        </div>
+    </section>
+
+    <section id="challenges">
+        <h2>Today's Challenges</h2>
+        <div class="challenge-container">
+            <div class="challenge-box" onclick="toggleCompletion(this)">Spend 10 minutes meditating in a quiet space.</div>
+            <div class="challenge-box" onclick="toggleCompletion(this)">Write down three things you're grateful for today.</div>
+            <div class="challenge-box" onclick="toggleCompletion(this)">Take a 5-minute break to focus on your breathing.</div>
+        </div>
+    </section>
+    
+    <script>
+        function toggleCompletion(box) {
+            box.classList.toggle('completed');
+        }
+    </script>
+    
+
+    <footer>
+        <p>&copy; 2023 MindScape. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
