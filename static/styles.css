@@ -248,3 +248,22 @@ input[type="submit"]:hover {
 #calendar {
     margin-right:10%;
 }
+#search-results {
+    margin-top: 20px;
+}
+
+#searched-entries {
+    list-style-type: none;
+    padding: 0;
+}
+
+#searched-entries li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#searched-entries a {
+    margin-left: 10px;
+}

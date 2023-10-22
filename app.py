@@ -192,6 +192,13 @@ def delete_entry(username, entry_id):
     entries_collection.delete_one({"_id": ObjectId(entry_id)})
     return redirect(url_for('entries', parameter=username))
 
+@app.route('/search_entries/<username>', methods=['POST'])
+def search_entries(username):
+    search_query = request.form['search_query']
+    entries_collection = database.get_collection(str(username) + '_entries')
+    search_results = list(entries_collection.find({"content": {"$regex": search_query, "$options": "i"}}))
+    all_entries = list(entries_collection.find())
+    return render_template('entries.html', current_user=username, entries=all_entries, search_results=search_results)
 
 if __name__ == '__main__':
     app.run(debug=True)

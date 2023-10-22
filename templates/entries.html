@@ -51,6 +51,25 @@
         </li>
         {% endfor %}
     </ul>
+   
+    <h2>Search Entries</h2>
+        <form action="/search_entries/{{current_user}}" method="POST">
+        <input type="text" name="search_query" placeholder="Search your entries...">
+        <input type="submit" value="Search">
+        </form>
+
+        <div id="search-results">
+    <h3>Search Results</h3>
+    <ul id="searched-entries">
+        {% for entry in search_results %}
+        <li>
+            {{ entry.content }}
+            <a href="/edit_entry/{{current_user}}/{{ entry._id }}">Edit</a>
+            <a href="/delete_entry/{{current_user}}/{{ entry._id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 
 </html>
