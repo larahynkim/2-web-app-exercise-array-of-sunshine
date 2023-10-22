@@ -39,23 +39,26 @@
             <input type="date" id="date" name="date">
             <button type="submit" id="checkin">Check In</button>
         </form>
-        <h2>Days Checked In:</h2>
-        {% if checked_dates %}
-            <ul class="checked-dates-list">
-                {% for date in checked_dates %}
-                    {% if date %}
-                        <li>{{ date }}</li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No checked-in days yet.</p>
-        {% endif %}
-        <div id="checked-in-counter">
-         <span>Number of Days Checked In: </span>
-            <span id="checked-in-count">0</span>
+        <div id="days-checked-in-container">
+            <div id="days-checked-in-section">
+                <h2>Days Checked In:</h2>
+                {% if checked_dates %}
+                    <ul class="checked-dates-list">
+                        {% for date in checked_dates %}
+                            {% if date %}
+                                <li>{{ date }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No checked-in days yet.</p>
+                {% endif %}
+            </div>
+            <div id="checked-in-counter">
+                <span>Number of Days Checked In: </span>
+                <span id="checked-in-count">0</span>
+            </div>
         </div>
-
         <div id="calendar"></div>
     </div>
     <script>

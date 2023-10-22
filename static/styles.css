@@ -217,12 +217,38 @@ input[type="submit"]:hover {
         flex-direction: column;
     }
 }
-  
+#days-checked-in-container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+#days-checked-in-section {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.checked-dates-list {
+    padding-left: ;
+}
+
+.checked-dates-list li {
+    margin-bottom: 5px;
+}
+
 #checked-in-counter {
     margin-top: 20px;
+    margin-right: 20px;
     font-size: 18px;
     background-color: white;
     padding: 10px;
+    padding-right: 20px; 
     border-radius: 5px;
     display: inline-block;
+    text-align: center;
+    box-sizing: border-box; 
+}
+
+#calendar {
+    margin-right:10%;
 }
