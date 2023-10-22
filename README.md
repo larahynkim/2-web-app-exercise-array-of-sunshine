@@ -14,3 +14,9 @@ A little exercise to build a web application following an agile development proc
 ## Task boards
 [Sprint 1 Task Board](https://github.com/orgs/software-students-fall2023/projects/32) <br>
 [Sprint 2 Task Board](https://github.com/orgs/software-students-fall2023/projects/33)
+
+## Set Up 
+In the project directory, run the following command: 
+```
+python3 app.py 
+```
