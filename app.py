@@ -3,13 +3,21 @@ from pymongo import MongoClient
 import requests
 import random 
 from bson import ObjectId
+import certifi
+from flask_cors import CORS
+from flask import json
 
+
+ca = certifi.where()
 ATLAS_URI = 'mongodb+srv://admin:admin@cluster0.lulecqi.mongodb.net/?retryWrites=true&w=majority'
 app = Flask(__name__)
 client = MongoClient(ATLAS_URI) 
+client = MongoClient(ATLAS_URI, tlsCAFile=ca)
 database = client.get_database('mindscape')  
 users = database.get_collection('users') 
-
+client = MongoClient(ATLAS_URI, tlsAllowInvalidCertificates=True)
+app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def start():
@@ -91,7 +99,7 @@ def calendar(parameter):
     cursor = database[str(parameter) + '_calendar'].find({}, {"date": 1, "_id": 0})
     for doc in cursor:
         dates.append(doc["date"])
-    return render_template('calendar.html', current_user = parameter, checked_dates=dates)
+    return render_template('calendar.html', current_user=parameter, checked_dates=dates)
 
 @app.route('/checkin/<parameter>', methods=["GET", "POST"])
 def checkin(parameter):
@@ -102,7 +110,7 @@ def checkin(parameter):
     cursor = database[str(parameter) + '_calendar'].find({}, {"date": 1, "_id": 0})
     for doc in cursor:
         dates.append(doc["date"])
-    return render_template("calendar.html", current_user = parameter, checked_dates=dates)
+    return render_template("calendar.html", current_user=parameter, checked_dates=dates)
 
 @app.route('/account/<parameter>')
 def account(parameter):
@@ -127,7 +135,6 @@ def entries(parameter):
     entries_collection = database.get_collection(str(parameter) + '_entries')
     all_entries = list(entries_collection.find())
     return render_template('entries.html', current_user=parameter, entries=all_entries)
-
 
 # #edit an entry
 @app.route('/edit_entry/<username>/<entry_id>')
