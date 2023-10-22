@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile-friendly viewport tag -->
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b2dede;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #header {
+            background-color: #7aceff;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #title {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #title img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        #menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        #account-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .affirmation-box {
+            border: 2px solid #7aceff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            font-style: italic;
+            background-color: #fff;
+        }
+
+        .challenge-box {
+            border: 1px solid #7aceff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            cursor: pointer;
+            max-width: 200px;
+            background-color: #fff;
+        }
+
+        .challenge-box:hover {
+            background-color: #e0f0f0;
+        }
+
+        @media screen and (max-width: 600px) {
+            #menu {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="title">
+            <h1>MINDSCAPE</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
+            <p>Welcome, {{current_user}}!</p>
+        </div>
+        <div id="menu">
+            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
+            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
+            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
+            <a href="/logout" class="menu-button">Logout</a>
+        </div>
+        <a href="/account" id="account-button">Account</a>
+    </div>
+    <h1>Daily Affirmation</h1>
+    <div class="affirmation-box">{{daily_affirmation}}</div>
+    <h2>Daily Challenges</h2>
+    {% for challenge in daily_challenges %}
+        <div class="challenge-box">{{challenge}}</div>
+    {% endfor %}
+</body>
+</html>

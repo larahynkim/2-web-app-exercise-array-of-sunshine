@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b2dede;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #header {
+            background-color: #7aceff;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #title {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #title img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        #menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        #account-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        #journal-entries li {
+            background-color: white;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            list-style-type: none;
+            position: relative;
+        }
+
+        #journal-entries a {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: none;
+            background-color: #7aceff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block; 
+        }
+
+
+        #journal-entries a:hover {
+            background-color: #5aaedd;
+        }
+
+        /* #journal-entries a:nth-child(2) {
+            right: 70px;
+        }
+
+        #journal-entries a:nth-child(3) {
+            right: 10px;
+        } */
+
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #7aceff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5aaedd;
+        }
+
+        @media screen and (max-width: 600px) {
+            #menu {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="title">
+            <h1>MINDSCAPE</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
+            <p>Welcome, {{current_user}}!</p>
+        </div>
+        <div id="menu">
+            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
+            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
+            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
+            <a href="/logout" class="menu-button">Logout</a>
+        </div>
+        <a href="/account/{{current_user}}" id="account-button">Account</a>
+    </div>
+    <h1>Entries</h1>
+
+    <h2>Add New Entry</h2>
+    <form action="/add_entry/{{current_user}}" method="POST">
+        <textarea name="journal_entry" rows="4" placeholder="Write your thoughts..."></textarea><br>
+        <input type="submit" value="Add Entry">
+    </form>
+
+    <h2>Your Entries</h2>
+    <ul id="journal-entries">
+        {% for entry in entries %}
+        <li>
+            {{ entry.content }}
+            <a href="/edit_entry/{{current_user}}/{{ entry._id }}">Edit</a>
+            <a href="/delete_entry/{{current_user}}/{{ entry._id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

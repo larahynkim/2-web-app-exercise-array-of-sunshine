@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b2dede;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        #header {
+            background-color: #7aceff;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #title img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        #menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-button,
+        #account-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .menu-button:hover,
+        #account-button:hover {
+            background-color: #333;
+        }
+
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            font-size: 16px;
+            resize: vertical;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #7aceff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5aaedd;
+        }
+
+        @media screen and (max-width: 600px) {
+            #menu {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="title">
+            <h1>MINDSCAPE</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
+            <p>Welcome, {{current_user}}!</p>
+        </div>
+        <div id="menu">
+            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
+            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
+            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
+            <a href="/logout" class="menu-button">Logout</a>
+        </div>
+        <a href="/account/{{current_user}}" id="account-button">Account</a>
+    </div>
+
+    <h1>Edit Entry</h1>
+    <form action="/save_edit/{{current_user}}/{{entry_id}}" method="POST">
+        <textarea name="journal_entry" rows="4">{{current_entry_content}}</textarea><br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b2dede;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background-color: #7aceff;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #title {
+            display: flex;
+            align-items: center;
+        }
+        #title img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        #menu {
+            display: flex;
+        }
+        .menu-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        #account-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 20px;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="title">
+            <h1>MINDSCAPE</h1>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
+            <p> Welcome, {{current_user}}!</p>
+        </div>
+        <div id="menu">
+            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
+            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
+            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
+            <a href="/logout" class="menu-button">Logout</a>
+        </div>
+        <a href="/account/{{current_user}}" id="account-button">Account</a>
+    </div>
+    <form method="POST", action="/checkin/{{current_user}}">
+        <label for="date">select date:</label>
+        <input type="date" id="date" name="date">
+        <button type="submit" id="checkin">check in</button>
+    </form>
+    <h2>Days checked in:</h2>
+    <ul>
+        {% for date in checked_dates %}
+            <li>{{ date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
