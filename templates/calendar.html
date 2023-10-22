@@ -51,7 +51,11 @@
         {% else %}
             <p>No checked-in days yet.</p>
         {% endif %}
-        
+        <div id="checked-in-counter">
+         <span>Number of Days Checked In: </span>
+            <span id="checked-in-count">0</span>
+        </div>
+
         <div id="calendar"></div>
     </div>
     <script>
@@ -65,7 +69,9 @@
                 events: events
             });
             calendar.render();
-        });
+            var checkedInCount = checkedDates.length - 1;
+        document.getElementById('checked-in-count').textContent = checkedInCount;
+    });
     </script>
     
         
