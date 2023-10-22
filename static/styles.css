@@ -228,10 +228,6 @@ input[type="submit"]:hover {
     flex-grow: 1;
 }
 
-.checked-dates-list {
-    padding-left: ;
-}
-
 .checked-dates-list li {
     margin-bottom: 5px;
 }

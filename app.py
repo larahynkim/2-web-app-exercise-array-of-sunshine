@@ -79,7 +79,37 @@ def get_daily_challenges(n=3):
         "Avoid screen time for an hour before bed.",
         "Read a book for 15 minutes.",
         "Try out a new hobby.",
-        "Do 5 minutes of deep breathing.",        
+        "Do 5 minutes of deep breathing.",     
+        "Drink more water.",   
+        "Take your vitamins.",   
+        "Sleep for 8-9 hours every night.",   
+        "Take a 30 minute walk.",   
+        "Go to the gym.",   
+        "No complaining.",   
+        "No cursing.",   
+        "No fast food.",   
+        "Pay someone a compliment.",   
+        "Read 20 pages of a book.",   
+        "Write down three things you're grateful for.",
+        "Take a 15-minute walk outside and focus on your surroundings.",
+        "Reach out to a friend or family member you haven't spoken to in a while.",
+        "Try a new recipe or cook a meal from scratch.",
+        "Take 5 minutes to meditate and focus on your breathing.",
+        "Declutter and organize a small area of your home or workspace.",
+        "Read for at least 20 minutes from a book you enjoy.",
+        "Write a positive affirmation and repeat it to yourself throughout the day.",
+        "Try a new hobby or activity you've been interested in.",
+        "Perform a random act of kindness for someone.", 
+        "Start your day with a healthy breakfast and mindful eating.",
+		"Take a break every hour during work or study to stretch or move around.",
+		"List five things you've accomplished recently, no matter how small.",
+		"Practice deep breathing for five minutes in a quiet space.",
+		"Challenge yourself to learn a new word and use it in a sentence.",
+		"Compliment someone genuinely.",
+		"Spend 10 minutes tidying up your living or work space.",
+		"Identify and write down one personal or professional goal for the month.",
+		"Go to bed 30 minutes earlier than usual to ensure you get enough rest.",
+		"Take a moment to appreciate a piece of art, whether it’s in a museum, online, or on the street."
     ]
     return random.sample(challenges, n)
 
@@ -115,7 +145,7 @@ def checkin(parameter):
 @app.route('/account/<parameter>')
 def account(parameter):
     #not done
-    return render_template('account.html')
+    return render_template('account.html', current_user=parameter)
 
 @app.route('/logout')
 def logout():

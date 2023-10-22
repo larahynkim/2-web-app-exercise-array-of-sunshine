@@ -30,7 +30,7 @@
             </div>
             <p id="welcome-message">Welcome, {{current_user}}!</p>
         </div>
-        <a href="/account" id="account-button">
+        <a href="/account/{{current_user}}" id="account-button">
             <img src="{{ url_for('static', filename='account_icon.png') }}" alt="Account">
         </a>
     <h1>Entries</h1>
