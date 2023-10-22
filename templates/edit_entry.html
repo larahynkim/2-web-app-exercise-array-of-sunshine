@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Entries</title>
+    <title>Edit Entry</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,26 +69,11 @@
         </div>
         <a href="/account/{{current_user}}" id="account-button">Account</a>
     </div>
-    <h1>Entries</h1>
 
-    <h2>Add New Entry</h2>
-    <form action="/add_entry/{{current_user}}" method="POST">
-        <textarea name="journal_entry" rows="4" cols="50" placeholder="Write your thoughts..."></textarea><br>
-        <input type="submit" value="Add Entry">
+    <h1>Edit Entry</h1>
+    <form action="/save_edit/{{current_user}}/{{entry_id}}" method="POST">
+        <textarea name="journal_entry" rows="4" cols="50">{{current_entry_content}}</textarea><br>
+        <input type="submit" value="Save">
     </form>
-
-    <h2>Your Entries</h2>
-    <ul id="journal-entries">
-        {% for entry in entries %}
-            <li>
-                {{ entry.content }}
-                <a href="/edit_entry/{{current_user}}/{{ entry._id }}">Edit</a>
-                <a href="/delete_entry/{{current_user}}/{{ entry._id }}">Delete</a> 
-            </li>
-        {% endfor %}
-    </ul>
 </body>
 </html>
-
-
-
