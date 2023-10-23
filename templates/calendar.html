@@ -1,88 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calendar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #b2dede;
-            margin: 0;
-            padding: 0;
-        }
-        #header {
-            background-color: #7aceff;
-            color: rgb(0, 0, 0);
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        #title {
-            display: flex;
-            align-items: center;
-        }
-        #title img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-        }
-        #menu {
-            display: flex;
-        }
-        .menu-button {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin: 0 10px;
-            cursor: pointer;
-        }
-        #account-button {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            margin-right: 20px;
-            cursor: pointer;
-            float: right;
-        }
-    </style>
+    <title>CALENDAR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css' rel='stylesheet' />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js'></script>
 </head>
 <body>
-    <div id="header">
-        <div id="title">
-            <h1>MINDSCAPE</h1>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnPq6BkZ7qfUB6OV6OB4qkl0F-Inojo59j-Q&usqp=CAU" alt="Tree Icon">
-            <p> Welcome, {{current_user}}!</p>
-        </div>
-        <div id="menu">
-            <a href="/home/{{current_user}}" class="menu-button">Home Page</a>
-            <a href="/entries/{{current_user}}" class="menu-button">Entries</a>
-            <a href="/calendar/{{current_user}}" class="menu-button">Calendar</a>
-            <a href="/logout" class="menu-button">Logout</a>
-        </div>
-        <a href="/account/{{current_user}}" id="account-button">Account</a>
+    
+    <div class="navbar-wrapper">
+        <aside class="side-navbar">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="/home/{{ current_user }}"><img src="{{ url_for('static', filename='home_icon.png') }}" alt="Home" /></a></li>
+                <li class="nav-item"><a href="/entries/{{ current_user }}"><img src="{{ url_for('static', filename='journal_icon.png') }}" alt="Journal" /></a></li>
+                <li class="nav-item"><a href="/calendar/{{ current_user }}"><img src="{{ url_for('static', filename='calendar_icon.png') }}" alt="Calendar" /></a></li>
+                <li class="nav-item"><a href="/logout">Logout</a></li>
+            </ul>
+        </aside>
     </div>
-    <form method="POST", action="/checkin/{{current_user}}">
-        <label for="date">select date:</label>
-        <input type="date" id="date" name="date">
-        <button type="submit" id="checkin">check in</button>
-    </form>
-    <h2>Days checked in:</h2>
-    <ul>
-        {% for date in checked_dates %}
-            <li>{{ date }}</li>
-        {% endfor %}
-    </ul>
+    <div id="content" style="margin-left: 100px;">
+        <div id="header">
+            <div id="title">
+                <h1>MINDSCAPE</h1>
+                <img src="{{ url_for('static', filename='mindscapelogo.png') }}" alt="Tree Icon">
+            </div>
+            <p id="welcome-message">Welcome, {{ current_user }}!</p>
+        </div>
+        <a href="/account/{{ current_user }}" id="account-button">
+            <img src="{{ url_for('static', filename='account_icon.png') }}" alt="Account">
+        </a>
+        <form method="POST" action="/checkin/{{ current_user }}">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date">
+            <button type="submit" id="checkin">Check In</button>
+        </form>
+        <div id="days-checked-in-container">
+            <div id="days-checked-in-section">
+                <h2>Days Checked In:</h2>
+                {% if checked_dates %}
+                    <ul class="checked-dates-list">
+                        {% for date in checked_dates %}
+                            {% if date %}
+                                <li>{{ date }}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No checked-in days yet.</p>
+                {% endif %}
+            </div>
+            <div id="checked-in-counter">
+                <span>Number of Days Checked In: </span>
+                <span id="checked-in-count">0</span>
+            </div>
+        </div>
+        <div id="calendar"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var checkedDates = {{ checked_dates|tojson }}.filter(date => date.trim() !== "");
+            var events = checkedDates.map(date => ({ start: date, allDay: true }));
+    
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid' ],
+                events: events
+            });
+            calendar.render();
+    
+            var checkedInCount = checkedDates.length;
+            document.getElementById('checked-in-count').textContent = checkedInCount;
+        });
+    </script>
 </body>
 </html>
-
-
-
-

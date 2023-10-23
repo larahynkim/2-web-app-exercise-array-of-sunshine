@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+</head>
+<body>
+    <div class="navbar-wrapper">
+        <aside class="side-navbar">
+            <ul class="nav-links">
+                <li class="nav-item"><a href="/home/{{current_user}}"><img src="{{ url_for('static', filename='home_icon.png') }}" alt="Home" /></a></li>
+                <li class="nav-item"><a href="/entries/{{current_user}}"><img src="{{ url_for('static', filename='journal_icon.png') }}" alt="Journal" /></a></li>
+                <li class="nav-item"><a href="/calendar/{{current_user}}"><img src="{{ url_for('static', filename='calendar_icon.png') }}" alt="Calendar" /></a></li>
+                <li class="nav-item"><a href="/logout">Logout</a></li>
+            </ul>
+        </aside>
+    </div>
+    <div id="content" style="margin-left: 100px;">
+        <div id="header">
+            <div id="title">
+                <h1>MINDSCAPE</h1>
+                <img src="{{ url_for('static', filename='mindscapelogo.png') }}" alt="Tree Icon">
+            </div>
+        </div>
+        <a href="/account/{{current_user}}" id="account-button">
+            <img src="{{ url_for('static', filename='account_icon.png') }}" alt="Account">   
+        </a>
+        <h2> Account Info </h2>
+        <p> Username: {{current_user}}</p>
+        <li class="nav-item"><a href="/logout">Logout</a></li>
+
+</body>
+</html>

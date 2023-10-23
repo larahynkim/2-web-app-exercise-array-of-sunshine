@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b2dede;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+#header {
+    background-color: #b2dede;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#title img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+#title h1, #title img {
+    margin: 0;
+}
+#welcome-message {
+    margin-top: 20px;
+}
+#menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.menu-button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+}
+.affirmation-box {
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    font-style: italic;
+    background-color: #fff;
+}
+.challenge-box {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    max-width: 200px;
+    background-color: #fff;
+}
+.challenge-box:hover {
+    background-color: #e0f0f0;
+}
+@media screen and (max-width: 600px) {
+    #menu {
+        flex-direction: column;
+    }
+}
+.navbar-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    overflow: hidden;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5; 
+}
+
+.navbar-wrapper:hover {
+    width: 100px;
+    opacity: 1; 
+}
+
+.navbar-wrapper:hover .side-navbar {
+    width: 100px; 
+}
+
+.side-navbar {
+    width: 50px; 
+    height: 100%;
+    background-color: #37a989;
+    padding: 1rem 0;
+    transition: width 0.3s ease;
+    text-align: center; 
+}
+
+.navbar-wrapper h1, .navbar-wrapper .nav-links {
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.navbar-wrapper:hover h1, 
+.navbar-wrapper:hover .nav-links {
+    opacity: 1;  
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-item {
+    margin-bottom: 10px !important;
+    padding: 0.5rem 0;
+    list-style-type: none;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.nav-item a:hover {
+    text-decoration: underline;
+}
+
+.nav-item img {
+    width: 50px; 
+    height: 45px; 
+    display: block;
+    margin: 0 auto;            
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.nav-item img:hover {
+    opacity: 0.7;
+}
+#account-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#account-button img {
+    width: 40px;
+    height: 40px;
+}
+
+#journal-entries li {
+    background-color: white;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 5px;
+    list-style-type: none;
+    position: relative;
+    max-width: 60%;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#journal-entries a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: #7aceff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block; 
+}
+
+#journal-entries a:hover {
+    background-color: #5aaedd;
+}
+
+/* #journal-entries a:nth-child(2) {
+    right: 70px;
+}
+
+#journal-entries a:nth-child(3) {
+    right: 10px;
+} */
+
+textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #7aceff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #5aaedd;
+}
+
+@media screen and (max-width: 600px) {
+    #menu {
+        flex-direction: column;
+    }
+}
+#days-checked-in-container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+#days-checked-in-section {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.checked-dates-list li {
+    margin-bottom: 5px;
+}
+
+#checked-in-counter {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    background-color: white;
+    padding: 10px;
+    padding-right: 20px; 
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box; 
+}
+
+#calendar {
+    margin-right:10%;
+}
+#search-results {
+    margin-top: 20px;
+}
+
+#searched-entries {
+    list-style-type: none;
+    padding: 0;
+}
+
+#searched-entries li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#searched-entries a {
+    margin-left: 10px;
+}
