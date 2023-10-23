@@ -26,3 +26,7 @@ In the project directory, run the following command:
 ```
 python3 app.py 
 ```
+## View the demo: 
+https://github.com/software-students-fall2023/2-web-app-exercise-array-of-sunshine/assets/132033330/c41b4735-3f4f-4a6d-8035-aa4b53414b8a
+
+
