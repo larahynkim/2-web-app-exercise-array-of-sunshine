@@ -16,6 +16,12 @@ A little exercise to build a web application following an agile development proc
 [Sprint 2 Task Board](https://github.com/orgs/software-students-fall2023/projects/33)
 
 ## Set Up 
+Open your terminal and install all of the following dependencies via this command:
+```
+pip install Flask pymongo certifi flask-cors requests
+
+```
+
 In the project directory, run the following command: 
 ```
 python3 app.py 
